@@ -29,7 +29,10 @@ public class JanusGraphAdapter{
 		try {
 		graph = EmptyGraph.instance();
 	    g = graph.traversal().withRemote("remote-graph.properties");
+	   
 		}catch(Exception e) {
+			System.err.println("Error while connecting JanusGraph..");
+			System.err.println(e.getLocalizedMessage());
 			e.printStackTrace();
 		}
 	}
