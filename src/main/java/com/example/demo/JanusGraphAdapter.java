@@ -161,6 +161,7 @@ public static boolean existsUser(UserDao user) {
 	    
 	    exists = g.V().hasLabel("User").has("username",user.getUsername()).hasNext();
 	   
+	   
 	    
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -268,22 +269,35 @@ public static List<Vertex> getEcommunities(UserDao user) {
 	}
 	
 	public static Vertex addOrganization(String organization) {
-		Vertex org;
+		Vertex org=null;
+		
+		try {
 		org = g.addV("Organization").property("name", organization).next();
+		}catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
 		return org;
 		
 	}
 	
 	public static Vertex addEcommunity(String ecommunity) {
-		Vertex org;
+		Vertex org=null;
+		try {
 		org = g.addV("Ecommunity").property("name", ecommunity).next();
+		}catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
 		return org;
 		
 	}
 	
 	public static Vertex addRole(String role) {
-		Vertex org;
+		Vertex org=null;
+		try {
 		org = g.addV("Role").property("name", role).next();
+		}catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
 		return org;
 		
 	}
